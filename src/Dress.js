@@ -23,8 +23,8 @@ class Dress extends Component {
   render() {
     const socket= socketIOClient(this.state.endpoint)
 
-    socket.on('dress update', (dress) => {
-      document.body.innerHTML = dress;
+    socket.on('message', (data) => {
+      document.body.innerHTML = data;
     })
     return(
       <div>
