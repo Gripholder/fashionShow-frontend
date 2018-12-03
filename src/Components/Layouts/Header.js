@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import {AppBar, Toolbar, Typography, Button, IconButton} from '@material-ui/core';
-import menuIcon from '../../menu-logo.svg'
+import {AppBar, Toolbar, Typography, IconButton} from '@material-ui/core';
+import menuIcon from '../../Icons/menu-logo.svg'
 
 const styles = {
   root: {

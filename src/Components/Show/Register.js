@@ -40,7 +40,7 @@ function RegisterForm(props) {
         variant="outlined"
       />
       <Button variant="contained" size="medium" color="primary" className={classes.button}>
-        Medium
+        Submit
       </Button>
     </div>
   )

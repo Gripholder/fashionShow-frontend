@@ -1,30 +1,47 @@
 import React, {
   Component
 } from 'react';
-import { ConnectedWifiInfo } from './Show';
-import Button from './Show/Button'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import lightBlue from '@material-ui/core/colors/lightBlue';
+import pink from '@material-ui/core/colors/pink';
 import Section2 from './Show/Section2'
-import Section3 from './Show/Section3'
+import Register from './Show/Register'
 import Dialog from './Show/Dialog'
 import { Header, Footer } from './Layouts';
 import { subscribeToDress } from './Show/Socket'
 import { validateLocation } from './Show/ValidateLocation'
 import './App.css';
 
+const styles = {};
+
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#F2EAE3',
+      main: '#fe5400',
+    },
+    secondary: {
+      main: '#EEF0F1',
+      dark: '#0B0B0C',
+    },
+  },
+});
+
 class App extends Component {
   constructor() {
     super();
     this.state = {
       validatedLocation: true,
-      latitude: 0,
-      longtitude: 0,
       dress: [
         {
-          name: "BLa Bla",
+          name: "Placeholder1",
           image: "https://connaisseurparis.com/wp-content/uploads/2018/08/315731B5-2E97-41F4-A433-A323E8FEE9B1-682x1024-266x400.jpeg"
         },
         {
-          name: "BLa",
+          name: "Placeholder2",
           image: "https://connaisseurparis.com/wp-content/uploads/2018/08/315731B5-2E97-41F4-A433-A323E8FEE9B1-682x1024-266x400.jpeg"
         },
       ],
@@ -34,7 +51,8 @@ class App extends Component {
       console.log(dress)
       let dresses = this.state.dress.concat(dress)
       this.setState({
-        dress: dresses
+        dress: dresses,
+        activeStep: this.state.activeStep + 1
       })
     })
 
@@ -61,9 +79,9 @@ class App extends Component {
 
   render() {
       const { classes } = this.props;
-
     return (
   <div>
+    <MuiThemeProvider theme={theme}>
       <Header />
     <div style={{textAlign: 'center'}}>
     <div className="section1">
@@ -75,15 +93,20 @@ class App extends Component {
         <Section2 />
       </div>
       <div className="section3">
-        <Section3 />
+        <Register />
       </div>
       <div>
       <Footer />
       </div>
     </div>
+  </MuiThemeProvider>
   </div>
     );
   }
 }
 
-export default App;
+App.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(App);

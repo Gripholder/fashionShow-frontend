@@ -12,31 +12,46 @@ import { autoPlay } from 'react-swipeable-views-utils';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-const tutorialSteps = [
+const dresses = [
   {
-    label: 'San Francisco – Oakland Bay Bridge, United States',
-    imgPath:
-      'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
+    name: 'Vitale Barberis Canonico - Burgundy',
+    image:
+      'https://connaisseurparis.com/wp-content/uploads/2018/08/0772FC85-D61D-4096-9FB8-075FCDBE7B59-682x1024-266x400.jpeg',
   },
   {
-    label: 'Bird',
-    imgPath:
-      'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
+    name: 'Vitale Barberis Canonico - Navy Blue',
+    image:
+      'https://connaisseurparis.com/wp-content/uploads/2018/08/D61A7128-291D-43D6-9809-8ED7E3FB07A1-682x1024-266x400.jpeg',
   },
   {
-    label: 'Bali, Indonesia',
-    imgPath:
-      'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250&q=80',
+    name: 'Priatist - Navy blue',
+    image:
+      'https://connaisseurparis.com/wp-content/uploads/2018/08/83398DA4-EB3B-4197-BB5D-E1DD1DCDA54D-682x1024-266x400.jpeg',
   },
   {
-    label: 'NeONBRAND Digital Marketing, Las Vegas, United States',
-    imgPath:
-      'https://images.unsplash.com/photo-1518732714860-b62714ce0c59?auto=format&fit=crop&w=400&h=250&q=60',
+    name: 'Primatist - Blue',
+    image:
+      'https://connaisseurparis.com/wp-content/uploads/2018/08/A5E70E4A-4005-41E6-A18E-7B6C970FB635-682x1024-266x400.jpeg',
   },
   {
-    label: 'Goč, Serbia',
-    imgPath:
-      'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
+    name: 'Connaisseur - Burgundy',
+    image:
+      'https://connaisseurparis.com/wp-content/uploads/2018/08/9E4B0D71-1EB8-4891-9B21-FBC3D4FD54B1-682x1024-266x400.jpeg',
+  },
+  {
+    name: 'Connaisseur - Black and Gold',
+    image:
+      'https://connaisseurparis.com/wp-content/uploads/2018/08/83A27540-00FB-4A6E-A193-9B72A4FAF951-682x1024-266x400.jpeg',
+  },
+  {
+    name: 'Connaisseur - Navy blue',
+    image:
+      'https://connaisseurparis.com/wp-content/uploads/2018/08/5FFE2FBB-3D57-483C-8F69-5386C2EBF75B-682x1024-266x400.jpeg',
+  },
+  {
+    name: 'Connaisseur - Pulm Purple',
+    image:
+      'https://connaisseurparis.com/wp-content/uploads/2018/08/5BBC1397-41DE-4CC5-B555-B027E4A728A8-682x1024-266x400.jpeg',
   },
 ];
 
@@ -53,7 +68,7 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.default,
   },
   img: {
-    height: 255,
+    height: 600,
     display: 'block',
     maxWidth: 400,
     overflow: 'hidden',
@@ -85,12 +100,12 @@ class SwipeableTextMobileStepper extends React.Component {
   render() {
     const { classes, theme } = this.props;
     const { activeStep } = this.state;
-    const maxSteps = tutorialSteps.length;
+    const maxSteps = dresses.length;
 
     return (
       <div className={classes.root}>
         <Paper square elevation={0} className={classes.header}>
-          <Typography>{tutorialSteps[activeStep].label}</Typography>
+          <Typography>{dresses[activeStep].name}</Typography>
         </Paper>
         <AutoPlaySwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -98,10 +113,10 @@ class SwipeableTextMobileStepper extends React.Component {
           onChangeIndex={this.handleStepChange}
           enableMouseEvents
         >
-          {tutorialSteps.map((step, index) => (
-            <div key={step.label}>
+          {dresses.map((step, index) => (
+            <div key={step.name}>
               {Math.abs(activeStep - index) <= 2 ? (
-                <img className={classes.img} src={step.imgPath} alt={step.label} />
+                <img className={classes.img} src={step.image} alt={step.name} />
               ) : null}
             </div>
           ))}
