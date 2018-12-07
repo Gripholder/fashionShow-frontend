@@ -29,6 +29,7 @@ function RegisterForm(props) {
       <Typography variant="h3" color="inherit" className={classes.grow}>
         Register
       </Typography>
+      <form>
       <TextField
         id="outlined-email-input"
         label="Email"
@@ -42,6 +43,7 @@ function RegisterForm(props) {
       <Button variant="contained" size="medium" color="primary" className={classes.button}>
         Submit
       </Button>
+    </form>
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import StarRatingComponent from "react-star-rating-component";
 import { withStyles } from '@material-ui/core/styles';
 import MobileStepper from '@material-ui/core/MobileStepper';
 import Paper from '@material-ui/core/Paper';
@@ -7,6 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import { submitRating, getRating } from './Socket'
+
 
 const styles = theme => ({
   root: {
@@ -30,9 +33,19 @@ const styles = theme => ({
 });
 
 class TextMobileStepper extends React.Component {
+  componentDidMount(){
+    console.log('mount here')
+    getRating(this.props.activeStep)
+  }
+  onStarClick(nextValue) {
+    console.log(this.props.activeStep)
+
+    submitRating(this.props.activeStep, nextValue)
+  }
   render() {
-    const { classes, theme, activeStep } = this.props;
+    const { classes, theme, activeStep, rating } = this.props;
     const maxSteps = this.props.dress.length;
+
     return (
       <div className={classes.root}>
         <img
@@ -43,6 +56,12 @@ class TextMobileStepper extends React.Component {
         <Paper square elevation={0} className={classes.header}>
         <Typography>{this.props.dress[activeStep].name}</Typography>
         </Paper>
+        <StarRatingComponent
+          name="rate1"
+          starCount={5}
+          value={rating}
+          onStarClick={this.onStarClick.bind(this)}
+        />
         <MobileStepper
           steps={maxSteps}
           position="static"

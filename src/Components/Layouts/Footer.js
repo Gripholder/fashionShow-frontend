@@ -20,6 +20,10 @@ const styles = theme => ({
   },
   margin: {
     margin: theme.spacing.unit,
+  },
+  gridy: {
+    width: '100%',
+    margin: 0,
   }
 });
 
@@ -31,21 +35,15 @@ class Footer extends React.Component {
       <BottomNavigation
         className={classes.root}
       >
-      <Grid container spacing={16}>
+      <Grid container spacing={16} className={classes.gridy}>
         <Grid item xs>
-          <a href="https://www.facebook.com/events/366172560792981/">
-        <BottomNavigationAction label="Facebook" icon={<img src={facebook}></img>} />
-        </a>
+        <BottomNavigationAction href="https://www.facebook.com/events/366172560792981/" label="Facebook" icon={<img src={facebook}></img>} />
         </Grid>
         <Grid item xs>
-          <a href="https://twitter.com/iospaces?lang=en">
-        <BottomNavigationAction label="Twitter" icon={<img src={twitter}></img>} />
-        </a>
+        <BottomNavigationAction href="https://twitter.com/iospaces?lang=en" label="Twitter" icon={<img src={twitter}></img>} />
         </Grid>
         <Grid item xs>
-          <a href="https://www.instagram.com/iospaces/?hl=en">
-        <BottomNavigationAction label="Instagram" icon={<img src={instagram}></img>} />
-        </a>
+        <BottomNavigationAction href="https://www.instagram.com/iospaces/?hl=en" label="Instagram" icon={<img src={instagram}></img>} />
         </Grid>
         <Grid container spacing={16}>
             <Grid item xs>

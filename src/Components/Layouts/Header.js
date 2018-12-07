@@ -7,6 +7,7 @@ import menuIcon from '../../Icons/menu-logo.svg'
 const styles = {
   root: {
     flexGrow: 1,
+    textAlign: 'center',
   },
   grow: {
     flexGrow: 1,
@@ -26,9 +27,6 @@ function ButtonAppBar(props) {
           <Typography variant="h6" color="inherit" className={classes.grow}>
             Modern and scotch
           </Typography>
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-          <img src={menuIcon}></img>
-          </IconButton>
         </Toolbar>
       </AppBar>
     </div>

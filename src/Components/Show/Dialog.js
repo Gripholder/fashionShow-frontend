@@ -63,7 +63,13 @@ class FullScreenDialog extends React.Component {
               </IconButton>
             </Toolbar>
             <Grid container justify = "center">
-              <Stepper dress={this.props.dress} activeStep={this.props.activeStep} handleNext={this.props.handleNext} handleBack={this.props.handleBack}/>
+              <Stepper
+                dress={this.props.dress}
+                activeStep={this.props.activeStep}
+                handleNext={this.props.handleNext}
+                handleBack={this.props.handleBack}
+                rating={this.props.rating}
+                />
             </Grid>
         </Dialog>
       </div>
