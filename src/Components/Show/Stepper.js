@@ -37,18 +37,18 @@ class TextMobileStepper extends React.Component {
     submitRating(this.props.activeStep, nextValue)
   }
   render() {
-    const { classes, theme, activeStep, rating } = this.props;
-    const maxSteps = this.props.dress.length;
+    const { classes, theme, activeStep, rating, dress, handleBack, handleNext } = this.props;
+    const maxSteps = dress.length;
 
     return (
       <div className={classes.root}>
         <img
           className={classes.img}
-          src={this.props.dress[activeStep].image}
-          alt={this.props.dress[activeStep].name}
+          src={dress[activeStep].image}
+          alt={dress[activeStep].name}
         />
         <Paper square elevation={0} className={classes.header}>
-        <Typography>{this.props.dress[activeStep].name}</Typography>
+        <Typography>{dress[activeStep].name}</Typography>
         </Paper>
         <StarRatingComponent
           name="rate1"
@@ -62,13 +62,13 @@ class TextMobileStepper extends React.Component {
           activeStep={activeStep}
           className={classes.mobileStepper}
           nextButton={
-            <Button size="small" onClick={this.props.handleNext} disabled={activeStep === maxSteps - 1}>
+            <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
               Next
               {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
             </Button>
           }
           backButton={
-            <Button size="small" onClick={this.props.handleBack} disabled={activeStep === 0}>
+            <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
               {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
               Back
             </Button>

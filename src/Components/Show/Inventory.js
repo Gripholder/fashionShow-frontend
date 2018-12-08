@@ -84,11 +84,13 @@ const styles = theme => ({
   },
 });
 
-class SwipeableTextMobileStepper extends React.Component {
-  state = {
-    activeStep: 0,
-  };
-
+class Inventory extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      activeStep: 0,
+    }
+  }
   handleNext = () => {
     this.setState(prevState => ({
       activeStep: prevState.activeStep + 1,
@@ -123,7 +125,7 @@ class SwipeableTextMobileStepper extends React.Component {
         >
           {dresses.map((step, index) => (
             <a href={step.src} target="_blank">
-            <div key={step.name}>
+            <div>
               {Math.abs(activeStep - index) <= 2 ? (
                 <img className={classes.img} src={step.image} alt={step.name} label={step.name}/>
               ) : null}
@@ -154,9 +156,9 @@ class SwipeableTextMobileStepper extends React.Component {
   }
 }
 
-SwipeableTextMobileStepper.propTypes = {
+Inventory.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(SwipeableTextMobileStepper)
+export default withStyles(styles, { withTheme: true })(Inventory)

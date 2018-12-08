@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 import { TextField, Button } from '@material-ui/core';
 import { lightBlue, pink } from '@material-ui/core/colors';
 import { Header, Footer } from './Layouts';
-import Section2 from './Show/Section2'
+import Inventory from './Show/Inventory'
 import Register from './Show/Register'
 import Dialog from './Show/Dialog'
 import { getDresses, subscribeToDress, subscribeToRating, getRating, validateCode } from './Show/Socket'
 import {validateLocation} from './Show/ValidateLocation'
 import './App.css';
+
+const CODE = 'C0zdq1';
 
 const styles = theme => ({
   textField: {
@@ -17,6 +19,8 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     backgroundColor: 'red',
+  },
+  multilineColor: {
     color: 'white',
   },
 });
@@ -41,7 +45,6 @@ class App extends Component {
     this.state = {
       validatedLocation: false,
       validatedCode: false,
-      code: 'C0zdq1',
       dress: [],
       activeStep: 0,
       rating: 0,
@@ -58,13 +61,10 @@ class App extends Component {
         dress: dresses,
         activeStep: this.state.activeStep + 1
       })
-      getRating(this.state.activeStep)
     })
 
     subscribeToRating(rating => {
-      this.setState({
-        rating: rating
-      })
+      this.setState({rating})
     })
     validateCode(valid => {
       this.setState({
@@ -82,6 +82,7 @@ class App extends Component {
         dress: dresses
       })
     })
+    getRating(this.state.activeStep)
   }
 
   handleNext() {
@@ -106,7 +107,7 @@ class App extends Component {
   handleSubmit(e){
     e.preventDefault()
     let value = e.target.value
-    if(value == this.state.code){
+    if(value == CODE){
       this.setState({validatedCode: true})
     }
   }
@@ -137,11 +138,23 @@ class App extends Component {
        margin="normal"
        variant="filled"
        onChange={this.handleSubmit}
-     />
+       InputProps={{
+        classes: {
+          input: classes.multilineColor,
+          textColor: '#fff',
+          color: '#fff',
+        },
+      }}
+      InputLabelProps={{
+        style: {
+          width: '85%',
+          color: '#fff'
+        } }}
+        />
    }
     </div>
       <div className="section2">
-        <Section2 />
+        <Inventory />
       </div>
       <div className="section3">
         <Register />

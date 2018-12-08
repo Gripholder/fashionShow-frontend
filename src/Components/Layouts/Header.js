@@ -25,7 +25,7 @@ function ButtonAppBar(props) {
       <AppBar background="black" position="static">
         <Toolbar>
           <Typography variant="h6" color="inherit" className={classes.grow}>
-            Modern and scotch
+            Modern and Scotch
           </Typography>
         </Toolbar>
       </AppBar>
