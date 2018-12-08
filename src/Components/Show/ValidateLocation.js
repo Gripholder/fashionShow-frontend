@@ -6,6 +6,7 @@ const buildingLocation = {
 }
 
 const distance = 100;
+let disty = 0;
 
 
 
@@ -28,6 +29,7 @@ function showPosition(position) {
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     var d = R * c; // Distance in km
     console.log("distance calculated " + d)
+    disty = d
     return d;
   }
 
@@ -47,4 +49,4 @@ function showPosition(position) {
       }
 
 
-export {validateLocation};
+export {validateLocation, disty};

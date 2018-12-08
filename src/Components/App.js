@@ -8,7 +8,7 @@ import Inventory from './Show/Inventory'
 import Register from './Show/Register'
 import Dialog from './Show/Dialog'
 import { getDresses, subscribeToDress, subscribeToRating, getRating, validateCode } from './Show/Socket'
-import {validateLocation} from './Show/ValidateLocation'
+import {validateLocation, disty} from './Show/ValidateLocation'
 import './App.css';
 
 const CODE = 'C0zdq1';
@@ -48,11 +48,13 @@ class App extends Component {
       dress: [],
       activeStep: 0,
       rating: 0,
+      distance: 0,
     }
 
     validateLocation(valid => {
       this.setState({
-        validatedLocation: valid
+        validatedLocation: valid,
+        distance: disty,
       })
     })
     subscribeToDress(dress =>{
@@ -119,6 +121,7 @@ class App extends Component {
     <MuiThemeProvider theme={theme}>
       <Header />
     <div className="section1">
+      <div>{this.state.distance}</div>
     {
      this.state.validatedLocation || this.state.validatedCode?
      <Dialog
