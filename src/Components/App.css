@@ -22,17 +22,18 @@
   color: #61dafb;
 }
 
+.bodily {
+  text-align: center;
+  width: 100%;
+}
+
 .section1 {
   width: 100%;
   height: 93vh;
-  background: url('https://images.unsplash.com/photo-1542834281-7c3973bafe98?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=538edb9ec6165166c523f73a688313ec&auto=format&fit=crop&w=2734&q=80');
+  background: url('./images/homepage.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-.section1 div {
-  padding-top: 65vh;
 }
 
 .section2 div{

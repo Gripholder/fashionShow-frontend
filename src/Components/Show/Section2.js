@@ -17,41 +17,49 @@ const dresses = [
     name: 'Vitale Barberis Canonico - Burgundy',
     image:
       'https://connaisseurparis.com/wp-content/uploads/2018/08/0772FC85-D61D-4096-9FB8-075FCDBE7B59-682x1024-266x400.jpeg',
+    src: 'https://connaisseurparis.com/product/vitale-barberis-canonico-burgundy-with-blue-and-white-plaid-2-piece-slim-fit-suit/'
   },
   {
     name: 'Vitale Barberis Canonico - Navy Blue',
     image:
       'https://connaisseurparis.com/wp-content/uploads/2018/08/D61A7128-291D-43D6-9809-8ED7E3FB07A1-682x1024-266x400.jpeg',
+    src: 'https://connaisseurparis.com/product/vitale-barberis-canonico-navy-blue-with-green-plaid-2-piece-slim-fit-suit/'
   },
   {
     name: 'Priatist - Navy blue',
     image:
       'https://connaisseurparis.com/wp-content/uploads/2018/08/83398DA4-EB3B-4197-BB5D-E1DD1DCDA54D-682x1024-266x400.jpeg',
+    src: 'https://connaisseurparis.com/product/primatist-navy-blue-with-burgundy-dots-3-piece-slim-fit-suit/'
   },
   {
     name: 'Primatist - Blue',
     image:
       'https://connaisseurparis.com/wp-content/uploads/2018/08/A5E70E4A-4005-41E6-A18E-7B6C970FB635-682x1024-266x400.jpeg',
+    src: 'https://connaisseurparis.com/product/primatist-blue-3-piece-slim-fit-suit/'
   },
   {
     name: 'Connaisseur - Burgundy',
     image:
       'https://connaisseurparis.com/wp-content/uploads/2018/08/9E4B0D71-1EB8-4891-9B21-FBC3D4FD54B1-682x1024-266x400.jpeg',
+    src: 'https://connaisseurparis.com/product/connaisseur-burgundy-and-gold-floral-pattern-3-piece-slim-fit-tuxedo/'
   },
   {
     name: 'Connaisseur - Black and Gold',
     image:
       'https://connaisseurparis.com/wp-content/uploads/2018/08/83A27540-00FB-4A6E-A193-9B72A4FAF951-682x1024-266x400.jpeg',
+    src: 'https://connaisseurparis.com/product/connaisseur-black-and-gold-paisley-pattern-3-piece-slim-fit-tuxedo/'
   },
   {
     name: 'Connaisseur - Navy blue',
     image:
       'https://connaisseurparis.com/wp-content/uploads/2018/08/5FFE2FBB-3D57-483C-8F69-5386C2EBF75B-682x1024-266x400.jpeg',
+    src: 'https://connaisseurparis.com/product/connaisseur-navy-blue-check-pattern-3-piece-slim-fit-tuxedo/'
   },
   {
     name: 'Connaisseur - Pulm Purple',
     image:
       'https://connaisseurparis.com/wp-content/uploads/2018/08/5BBC1397-41DE-4CC5-B555-B027E4A728A8-682x1024-266x400.jpeg',
+    src: 'https://connaisseurparis.com/product/connaisseur-plum-purple-and-gold-camouflage-pattern-3-piece-slim-fit-tuxedo/'
   },
 ];
 
@@ -114,11 +122,13 @@ class SwipeableTextMobileStepper extends React.Component {
           enableMouseEvents
         >
           {dresses.map((step, index) => (
+            <a href={step.src} target="_blank">
             <div key={step.name}>
               {Math.abs(activeStep - index) <= 2 ? (
-                <img className={classes.img} src={step.image} alt={step.name} />
+                <img className={classes.img} src={step.image} alt={step.name} label={step.name}/>
               ) : null}
             </div>
+          </a>
           ))}
         </AutoPlaySwipeableViews>
         <MobileStepper
