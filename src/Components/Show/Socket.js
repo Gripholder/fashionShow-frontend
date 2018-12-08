@@ -1,6 +1,5 @@
 import openSocket from 'socket.io-client';
-const  socket = openSocket('http://localhost:3000/');
-// const  socket = openSocket('https://obscure-shelf-75677.herokuapp.com/');
+const  socket = openSocket('https://obscure-shelf-75677.herokuapp.com/');
 
 function getDresses(dresses) {
   socket.emit('Get Dresses', dresses)
