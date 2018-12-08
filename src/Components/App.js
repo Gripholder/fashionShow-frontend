@@ -1,28 +1,36 @@
 import React, { Component } from 'react';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { TextField, Button } from '@material-ui/core';
 import { lightBlue, pink } from '@material-ui/core/colors';
 import { Header, Footer } from './Layouts';
 import Section2 from './Show/Section2'
 import Register from './Show/Register'
 import Dialog from './Show/Dialog'
-import { getDresses, subscribeToDress, subscribeToRating, getRating } from './Show/Socket'
-import { validateLocation } from './Show/ValidateLocation'
+import { getDresses, subscribeToDress, subscribeToRating, getRating, validateCode } from './Show/Socket'
+import {validateLocation} from './Show/ValidateLocation'
 import './App.css';
 
-const styles = {};
+const styles = theme => ({
+  textField: {
+    marginTop: '65vh',
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    backgroundColor: 'red',
+    color: 'white',
+  },
+});
 
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: '#F2EAE3',
-      main: '#fe5400',
+      light: '#fdfdfd',
+      main: '#e02326',
     },
     secondary: {
-      main: '#EEF0F1',
-      dark: '#0B0B0C',
+      main: '#ed671e',
+      dark: '#2c2b2b',
     },
   },
 });
@@ -31,29 +39,41 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      validatedLocation: true,
+      validatedLocation: false,
+      validatedCode: false,
+      code: 'C0zdq1',
       dress: [],
       activeStep: 0,
       rating: 0,
     }
 
+    validateLocation(valid => {
+      this.setState({
+        validatedLocation: valid
+      })
+    })
     subscribeToDress(dress =>{
-      console.log(dress)
       let dresses = this.state.dress.concat(dress)
       this.setState({
         dress: dresses,
         activeStep: this.state.activeStep + 1
       })
+      getRating(this.state.activeStep)
     })
 
     subscribeToRating(rating => {
-      console.log('updating rating')
       this.setState({
         rating: rating
       })
     })
+    validateCode(valid => {
+      this.setState({
+        validateCode: valid
+      })
+    })
     this.handleNext = this.handleNext.bind(this)
     this.handleBack = this.handleBack.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -83,6 +103,14 @@ class App extends Component {
     }
   }
 
+  handleSubmit(e){
+    e.preventDefault()
+    let value = e.target.value
+    if(value == this.state.code){
+      this.setState({validatedCode: true})
+    }
+  }
+
   render() {
       const { classes } = this.props;
     return (
@@ -91,7 +119,7 @@ class App extends Component {
       <Header />
     <div className="section1">
     {
-     this.state.validatedLocation?
+     this.state.validatedLocation || this.state.validatedCode?
      <Dialog
        dress={this.state.dress}
        activeStep={this.state.activeStep}
@@ -99,7 +127,17 @@ class App extends Component {
        handleBack={this.handleBack}
        rating={this.state.rating}
        />
-     : <h1>Location not validated, please refresh page when at IO Spaces</h1>
+     :
+     <TextField
+       multiline
+       id="filled-uncontrolled"
+       label="Activation Code"
+       placeholder="Ask IOSpaces admin"
+       className={classes.textField}
+       margin="normal"
+       variant="filled"
+       onChange={this.handleSubmit}
+     />
    }
     </div>
       <div className="section2">

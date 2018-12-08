@@ -33,13 +33,7 @@ const styles = theme => ({
 });
 
 class TextMobileStepper extends React.Component {
-  componentDidMount(){
-    console.log('mount here')
-    getRating(this.props.activeStep)
-  }
   onStarClick(nextValue) {
-    console.log(this.props.activeStep)
-
     submitRating(this.props.activeStep, nextValue)
   }
   render() {

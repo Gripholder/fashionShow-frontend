@@ -23,6 +23,9 @@ const styles = {
   flex: {
     flex: 1,
   },
+  live: {
+    paddingTop: '65vh',
+  },
 };
 
 function Transition(props) {
@@ -33,6 +36,10 @@ class FullScreenDialog extends React.Component {
   state = {
     open: false,
   };
+
+  componentDidMount(){
+    window.scrollTo(0,0)
+  }
 
   handleClickOpen = () => {
     this.setState({ open: true });
@@ -45,7 +52,7 @@ class FullScreenDialog extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <div>
+      <div className={classes.live}>
         <Button variant="contained" color="primary" onClick={this.handleClickOpen}>Live Show</Button>
         <Dialog
           fullScreen
