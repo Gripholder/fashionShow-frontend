@@ -1,6 +1,5 @@
 import openSocket from 'socket.io-client';
-const  socket = openSocket('http://localhost:3001');
-// const  socket = openSocket('https://obscure-shelf-75677.herokuapp.com/');
+const  socket = openSocket('https://obscure-shelf-75677.herokuapp.com/');
 
 function getDresses(dresses) {
   socket.emit('Get Dresses', dresses)
@@ -17,7 +16,6 @@ function subscribeToDress(dress) {
 
 function subscribeToRating(rating) {
   socket.on('Rating', data => {
-    console.log('new rating recieved ' + data)
     rating(data)
   })
 }
@@ -28,7 +26,6 @@ function submitRating(id, rating){
 }
 
 function getRating(id) {
-  console.log('getrating of ' + id)
   socket.emit('Get Rating', id)
 }
 

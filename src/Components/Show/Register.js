@@ -20,7 +20,7 @@ const styles = theme => ({
 
 class Register extends React.Component {
 
-  // add mailerlite code
+  // mailerlite code
   componentDidMount() {
     const js = `
       function ml_webform_success_1144196() {

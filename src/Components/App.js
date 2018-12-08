@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles';
 import { TextField, Button } from '@material-ui/core';
 import { lightBlue, pink } from '@material-ui/core/colors';
 import { Header, Footer } from './Layouts';
@@ -121,7 +121,6 @@ class App extends Component {
     <MuiThemeProvider theme={theme}>
       <Header />
     <div className="section1">
-      <div>{this.state.distance}</div>
     {
      this.state.validatedLocation || this.state.validatedCode?
      <Dialog
@@ -144,8 +143,6 @@ class App extends Component {
        InputProps={{
         classes: {
           input: classes.multilineColor,
-          textColor: '#fff',
-          color: '#fff',
         },
       }}
       InputLabelProps={{

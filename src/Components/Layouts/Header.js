@@ -1,20 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import {AppBar, Toolbar, Typography, IconButton} from '@material-ui/core';
-import menuIcon from '../../Icons/menu-logo.svg'
+import {AppBar, Toolbar} from '@material-ui/core';
+import logo from '../../Icons/logo.svg'
 
 const styles = {
   root: {
     flexGrow: 1,
     textAlign: 'center',
   },
-  grow: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
+  logo: {
+    width: '20vh',
+    height: 'auto',
+    margin: 'auto',
   },
 };
 
@@ -24,9 +22,7 @@ function ButtonAppBar(props) {
     <div className={classes.root}>
       <AppBar background="black" position="static">
         <Toolbar>
-          <Typography variant="h6" color="inherit" className={classes.grow}>
-            Modern and Scotch
-          </Typography>
+          <img src={logo} className={classes.logo}></img>
         </Toolbar>
       </AppBar>
     </div>

@@ -1,14 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
+import { BottomNavigation, BottomNavigationAction, Grid, Button } from '@material-ui/core';
 import facebook from '../../Icons/facebook-logo.svg'
 import twitter from '../../Icons/twitter-logo.svg'
 import instagram from '../../Icons/instagram-logo.svg'
@@ -21,7 +14,7 @@ const styles = theme => ({
   margin: {
     margin: theme.spacing.unit,
   },
-  gridy: {
+  grid: {
     width: '100%',
     margin: 0,
   }
@@ -32,10 +25,8 @@ class Footer extends React.Component {
     const { classes } = this.props;
 
     return (
-      <BottomNavigation
-        className={classes.root}
-      >
-      <Grid container spacing={16} className={classes.gridy}>
+      <BottomNavigation className={classes.root}>
+      <Grid container spacing={16} className={classes.grid}>
         <Grid item xs>
         <BottomNavigationAction href="https://www.facebook.com/events/366172560792981/" label="Facebook" icon={<img src={facebook}></img>} />
         </Grid>
