@@ -11,7 +11,7 @@ import { getDresses, subscribeToDress, subscribeToRating, getRating, validateCod
 import {validateLocation, disty} from './Show/ValidateLocation'
 import './App.css';
 
-const CODE = 'C0zdq1';
+const CODE = 'iospacesdigital';
 
 const styles = theme => ({
   textField: {

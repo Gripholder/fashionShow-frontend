@@ -42,11 +42,13 @@ class TextMobileStepper extends React.Component {
 
     return (
       <div className={classes.root}>
+        <a href={dress[activeStep.url]} target="_blank">
         <img
           className={classes.img}
           src={dress[activeStep].image}
           alt={dress[activeStep].name}
         />
+    </a>
         <Paper square elevation={0} className={classes.header}>
         <Typography>{dress[activeStep].name}</Typography>
         </Paper>
